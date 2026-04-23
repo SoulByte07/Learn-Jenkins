@@ -1,0 +1,16 @@
+# Project: Jenkins on Podman
+# Consultant's Note: Added FQIN and volume labeling for Arch compatibility
+services:
+  jenkins:
+    image: docker.io/jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      # The :Z suffix is vital for Podman volume permissions
+      - jenkins_home:/var/jenkins_home:Z
+    restart: unless-stopped
+
+volumes:
+  jenkins_home:
