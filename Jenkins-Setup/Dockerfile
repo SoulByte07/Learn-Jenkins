@@ -2,7 +2,7 @@ FROM jenkins/jenkins:lts
 USER root
 
 # Install buildah and fuse-overlayfs
-RUN apt-get update && apt-get install -y buildah fuse-overlayfs
+RUN apt-get update && apt-get install -y buildah fuse-overlayfs podman
 
 # Jenkins runs as root in this setup; allow git operations in mounted workspaces
 RUN git config --system --add safe.directory '*'
