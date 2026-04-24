@@ -20,7 +20,7 @@ pipeline {
             steps {
                 // This starts a container, runs pytest, then destroys it (--rm)
                 // Output: Test results (Pass/Fail)
-                sh 'podman run --rm weather-api:latest pytest test_app.py'
+                sh 'podman run --rm weather-api:latest pytest app/test_app.py'
             }
         }
     }
