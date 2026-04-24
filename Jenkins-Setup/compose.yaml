@@ -13,7 +13,8 @@ services:
       - jenkins_home:/var/jenkins_home:Z
     restart: unless-stopped
 
-# Declare named volumes at the top level; podman-compose requires this
+# Use existing named volume (no project-prefix auto-create)
 volumes:
   jenkins_home:
-    driver: local
+    external: true
+    name: ${JENKINS_VOLUME_NAME:-jenkins_home}
