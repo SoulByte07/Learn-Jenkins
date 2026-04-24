@@ -5,7 +5,7 @@ pipeline {
         stage('Initialize') {
             steps {
                 // Jenkins automatically clones the code from Git before this
-                sh 'echo "Building project: ${env.JOB_NAME} on Arch Linux"'
+                sh 'echo "Building project: ${JOB_NAME} on Arch Linux"'
             }
         }
 
