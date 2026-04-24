@@ -1,5 +1,4 @@
 # Project: Jenkins on Podman
-# Consultant's Note: Added FQIN and volume labeling for Arch compatibility
 services:
   jenkins:
     image: docker.io/jenkins/jenkins:lts
@@ -14,3 +13,5 @@ services:
 
 volumes:
   jenkins_home:
+    external: true
+    name: jenkins_home
