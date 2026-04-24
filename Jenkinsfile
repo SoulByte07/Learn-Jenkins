@@ -9,7 +9,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 // 'bud' is short for Build-Using-Dockerfile
-                sh 'buildah bud --storage-driver=vfs -t weather-api:latest .'
+                sh 'buildah bud --isolation=chroot --storage-driver=vfs -t weather-api:latest .'
             }
         }
         stage('Run Tests') {
