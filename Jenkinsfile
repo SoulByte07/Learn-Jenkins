@@ -11,8 +11,8 @@ pipeline {
 
         stage('Build Image') {
             steps {
-                // Input: Dockerfile in the current directory
-                sh 'docker build -t weather-api:latest .'
+                // Input: podmanfile in the current directory
+                sh 'podman build -t weather-api:latest .'
             }
         }
 
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 // This starts a container, runs pytest, then destroys it (--rm)
                 // Output: Test results (Pass/Fail)
-                sh 'docker run --rm weather-api:latest pytest test_app.py'
+                sh 'podman run --rm weather-api:latest pytest test_app.py'
             }
         }
     }
