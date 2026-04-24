@@ -4,6 +4,9 @@ USER root
 # Install buildah and fuse-overlayfs
 RUN apt-get update && apt-get install -y buildah fuse-overlayfs
 
+# Jenkins runs as root in this setup; allow git operations in mounted workspaces
+RUN git config --system --add safe.directory '*'
+
 # Create the subuid/subgid files so buildah can map IDs correctly
 RUN echo "jenkins:100000:65536" > /etc/subuid && \
     echo "jenkins:100000:65536" > /etc/subgid
