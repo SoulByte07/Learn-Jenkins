@@ -1,22 +1,26 @@
-pipeline{
-    agent any
-    stages{
-        stage('Environment Setup'){
-            steps{
-                sh "podman build -t weather-app:latest ."
+pipeline {
+    agent any 
+
+    stages {
+        stage('Initialize') {
+            steps {
+                // Jenkins automatically clones the code from Git before this
+                sh 'echo "Building project: ${env.JOB_NAME} on Arch Linux"'
             }
         }
-        stage('Test'){
-            steps{
-                sh "podman run --rm weather-app:latest pytest test_app.py"}
+
+        stage('Build Image') {
+            steps {
+                // Input: Dockerfile in the current directory
+                sh 'docker build -t weather-api:latest .'
             }
         }
-        stage('Deploy'){
-            steps{
-                // stop the old container if it exists and start a new one
-                sh "podman stop weather-container || true"
-                sh "podman rm weather-container || true"
-                sh "podman run -d --name weather-container -p 5000:5000 weather-app:latest"
+
+        stage('Run Tests') {
+            steps {
+                // This starts a container, runs pytest, then destroys it (--rm)
+                // Output: Test results (Pass/Fail)
+                sh 'docker run --rm weather-api:latest pytest test_app.py'
             }
         }
     }
