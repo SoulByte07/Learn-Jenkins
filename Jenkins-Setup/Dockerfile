@@ -14,4 +14,6 @@ RUN echo "[storage]\ndriver = \"vfs\"" > /home/jenkins/.config/containers/storag
 
 RUN chown -R jenkins:jenkins /home/jenkins/.config
 
-USER jenkins
+# Run Jenkins process as root in this nested-container setup so Buildah
+# can avoid rootless user namespace mapping failures.
+USER root
