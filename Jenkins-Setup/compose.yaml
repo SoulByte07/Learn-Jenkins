@@ -2,11 +2,6 @@ services:
   jenkins:
     build: .
     container_name: jenkins
-    privileged: true
-    # This helps Podman handle the nested namespaces
-    security_opt:
-      - label=disable
-      - unmask=ALL
     ports:
       - "8080:8080"
     volumes:

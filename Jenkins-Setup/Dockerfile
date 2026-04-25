@@ -2,10 +2,8 @@ FROM jenkins/jenkins:lts
 USER root
 
 # Install buildah and fuse-overlayfs
-RUN apt-get update && apt-get install -y buildah fuse-overlayfs podman
-
-# Jenkins runs as root in this setup; allow git operations in mounted workspaces
-RUN git config --system --add safe.directory '*'
+RUN apt-get update && apt-get install -y --no-install-recommends buildah fuse-overlayfs podman && \
+    rm -rf /var/lib/apt/lists/*
 
 # Create the subuid/subgid files so buildah can map IDs correctly
 RUN echo "jenkins:100000:65536" > /etc/subuid && \
@@ -17,6 +15,4 @@ RUN echo "[storage]\ndriver = \"vfs\"" > /home/jenkins/.config/containers/storag
 
 RUN chown -R jenkins:jenkins /home/jenkins/.config
 
-# Run Jenkins process as root in this nested-container setup so Buildah
-# can avoid rootless user namespace mapping failures.
-USER root
+USER jenkins
