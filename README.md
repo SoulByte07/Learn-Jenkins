@@ -2,7 +2,6 @@
   <h1 id="readme">Learn Jenkins Mini Project</h1>
   <p>Build, test, and deploy a tiny Flask weather health API with Jenkins, Buildah, and Podman.</p>
   <p>
-    <a href="https://github.com/USER/REPO/actions/workflows/WORKFLOW_FILE.yml"><img src="https://img.shields.io/github/actions/workflow/status/USER/REPO/WORKFLOW_FILE.yml?branch=main&style=flat-square" alt="CI/Build"></a>
     <img src="https://img.shields.io/badge/Jenkins-Pipeline-D24939?logo=jenkins&logoColor=white&style=flat-square" alt="Jenkins">
     <img src="https://img.shields.io/badge/platform-Linux-FCC624?logo=linux&logoColor=black&style=flat-square" alt="Linux">
   </p>
@@ -19,7 +18,7 @@ This project is a hands-on playground for learning Jenkins CI/CD with a small Py
 - Provides a local Jenkins stack under `Jenkins-Setup/` for reproducible practice.
 
 ## 🎬 Demo / Screenshots
-![Jenkins Pipeline Demo](docs/demo.gif)
+![Jenkins Pipeline Screenshot](Asserts/Demo/jenkins-sucess.png)
 
 Replace `docs/demo.gif` with your real GIF or screenshot path.
 
