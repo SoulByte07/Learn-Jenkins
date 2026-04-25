@@ -3,3 +3,10 @@ __pycache__/
 env*
 Jenkins-Setup/
 Asserts/
+.git/
+.env
+.env.*
+.venv/
+*.pem
+*.key
+*.crt
